@@ -1,12 +1,14 @@
 import ExpenseItemProps from '../ExpenseItemProps/ExpenseItemProps';
+import Card from '../Card/Card';
+import './Expenses.css';
 
 function Expenses(props) {
 	return (
-		<div>
+		<Card className='expenses'>
 			<ExpenseItemProps data={props.expenses[0]} /> {/* passing props to child component */}
 			<ExpenseItemProps data={props.expenses[1]} />
 			<ExpenseItemProps data={props.expenses[2]} />
-		</div>
+		</Card>
 	)
 }
 
