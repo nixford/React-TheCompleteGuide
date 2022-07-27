@@ -1,10 +1,15 @@
+import './ExpenseItem.css';
+
+// Every React component is function which should be exported/imported 
 function ExpenseItem() {
 	return (
-		// Every React component must have always only one root element!!!
-		<div>
+		// In the HTML part the component must have always only one root element!!!
+		<div className='expense-item'> {/* react class binding syntax - 'className' */}
 			<div>Date</div>
-			<h2>Title</h2>
-			<div>Amount</div>
+			<div className='expense-item__description'>
+				<h2>Title</h2>
+				<div className='expense-item__price'>Amount</div>
+			</div>
 		</div>
 	)
 }
