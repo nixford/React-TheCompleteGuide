@@ -1,5 +1,5 @@
-import ExpenseItem from './components/ExpenseItemInitial/ExpenseItem';
-import Expenses from './components/Expenses/Expenses';
+// import ExpenseItem from './components/ExpenseComponents/ExpenseItemInitial/ExpenseItem';
+import Expenses from './components/ExpenseComponents/Expenses/Expenses';
 
 const expenses = [
   { date: new Date(2021, 8, 8), title: "Expense ratio", amount: 294.67 },
