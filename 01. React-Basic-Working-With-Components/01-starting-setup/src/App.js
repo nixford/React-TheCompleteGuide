@@ -7,7 +7,7 @@ const expenses = [
   { date: new Date(2021, 10, 10), title: "Book value", amount: 494.67 },
 ]
 
-function App() {
+const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
