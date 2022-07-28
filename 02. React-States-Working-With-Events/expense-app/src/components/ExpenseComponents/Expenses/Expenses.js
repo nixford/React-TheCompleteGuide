@@ -1,13 +1,13 @@
-import ExpenseItemProps from '../ExpenseItem/ExpenseItem';
+import ExpenseItem from '../ExpenseItem/ExpenseItem';
 import Card from '../../UI/Card/Card';
 import './Expenses.css';
 
 function Expenses(props) {
 	return (
 		<Card className='expenses'>
-			<ExpenseItemProps data={props.expenses[0]} /> {/* passing props to child component */}
-			<ExpenseItemProps data={props.expenses[1]} />
-			<ExpenseItemProps data={props.expenses[2]} />
+			<ExpenseItem data={props.expenses[0]} /> {/* passing props to child component */}
+			<ExpenseItem data={props.expenses[1]} />
+			<ExpenseItem data={props.expenses[2]} />
 		</Card>
 	)
 }

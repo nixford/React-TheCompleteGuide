@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
   // FIRST OPTION - MULTIPLE STATES
 
@@ -57,11 +57,11 @@ const ExpenseForm = () => {
       date: new Date(date),
     }
 
+    props.onSave(expenseDate) // child -> parend comunication with data passing
+
     setTitle('');
     setAmount('');
     setDate('');
-
-    console.log('expenseDate: ', expenseDate)
   };
 
   // Two way binding with -> value={title} - the same such as v-model in Vue.js
