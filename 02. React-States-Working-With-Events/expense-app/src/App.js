@@ -1,5 +1,6 @@
-import Expenses from './components/ExpenseComponents/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense/NewExpense';
+import Expenses from './components/ExpenseComponents/Expenses/Expenses/Expenses';
+
 
 const expenses = [
   { date: new Date(2021, 8, 8), title: "Expense ratio", amount: 294.67 },
@@ -8,10 +9,10 @@ const expenses = [
 ]
 
 const App = () => {
+
   const addExpenseHandler = (data) => {
     console.log(data);
   }
-
 
   return (
     <div>
