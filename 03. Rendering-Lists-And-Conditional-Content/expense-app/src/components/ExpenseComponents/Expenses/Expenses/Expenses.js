@@ -17,7 +17,7 @@ function Expenses(props) {
 			<Card className='expenses'>
 				<ExpensesFilter selectedYear={year} onSelect={selectYearHandler} />
 				{/* Making list in React and passing props to child component */}
-				{props.expenses.map((expense) => <ExpenseItem data={expense} />)}
+				{props.expenses.map((expense) => <ExpenseItem key={expense.id} data={expense} />)}
 			</Card>
 		</div>
 
