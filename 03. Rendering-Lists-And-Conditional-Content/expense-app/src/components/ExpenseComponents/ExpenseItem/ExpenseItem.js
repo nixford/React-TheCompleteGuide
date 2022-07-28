@@ -10,21 +10,21 @@ function ExpenseItem(props) {
 	// The function must be called inside the components (there is exception) function in order the data to be reactive
 	// needs default state -> props.data.title
 	// always returns array with two values: 1) is the updated value, 2) function for updating the value
-	const [title, setTitle] = useState(props.data.title);
+	// const [title, setTitle] = useState(props.data.title);
 
 
-	const clickHandler = () => {
-		setTitle('Updated');
-	}
+	// const clickHandler = () => {
+	// 	setTitle('Updated');
+	// }
 
 	return (
 		<Card className='expense-item'>
 			<ExpenseDate date={props.data.date} />
 			<div className='expense-item__description'>
-				<h2>{title}</h2>
+				<h2>{props.data.title}</h2>
 				<div className='expense-item__price'>{props.data.amount}</div>
 			</div>
-			<button onClick={clickHandler}>Change title</button>
+			{/* <button onClick={clickHandler}>Change title</button> */}
 		</Card>
 	)
 }

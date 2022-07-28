@@ -1,17 +1,22 @@
+import React, { useState } from 'react';
 import NewExpense from './components/NewExpense/NewExpense/NewExpense';
 import Expenses from './components/ExpenseComponents/Expenses/Expenses/Expenses';
 
 
-const expenses = [
-  { date: new Date(2021, 8, 8), title: "Expense ratio", amount: 294.67 },
-  { date: new Date(2021, 9, 9), title: "Earnings", amount: 394.67 },
-  { date: new Date(2021, 10, 10), title: "Book value", amount: 494.67 },
+const INITIAL_EXPENSES = [
+  { id: 'e1', title: "Expense ratio", amount: 294.67, date: new Date(2021, 8, 8) },
 ]
 
 const App = () => {
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
 
-  const addExpenseHandler = (data) => {
-    console.log(data);
+  // The default argument (prevExp), which can be received from the state function (in this case "setExpenses") should be used
+  // The setExpenses([expense, ...expenses]) is not correct
+  // The correct syntax is the following:
+  const addExpenseHandler = (exp) => {
+    setExpenses((prevExp) => {
+      return [exp, ...prevExp]
+    })
   }
 
   return (

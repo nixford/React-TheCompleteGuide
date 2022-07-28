@@ -16,9 +16,8 @@ function Expenses(props) {
 		<div>
 			<Card className='expenses'>
 				<ExpensesFilter selectedYear={year} onSelect={selectYearHandler} />
-				<ExpenseItem data={props.expenses[0]} /> {/* passing props to child component */}
-				<ExpenseItem data={props.expenses[1]} />
-				<ExpenseItem data={props.expenses[2]} />
+				{/* Making list in React and passing props to child component */}
+				{props.expenses.map((expense) => <ExpenseItem data={expense} />)}
 			</Card>
 		</div>
 
