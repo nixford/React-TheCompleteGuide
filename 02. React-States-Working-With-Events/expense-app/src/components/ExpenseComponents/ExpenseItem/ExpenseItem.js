@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ExpenseDate from '../ExpenseDate/ExpenseDate';
 import Card from '../../UI/Card/Card';
-import './ExpenseItemProps.css';
+import './ExpenseItem.css';
 
 // All passed props from the parent are received in 'props' argument 
 // In case of many props send from the parent - all can be accessed by props such as props.title, props.date, props.amount

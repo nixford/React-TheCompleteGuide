@@ -1,4 +1,4 @@
-import ExpenseItemProps from '../ExpenseItemProps/ExpenseItemProps';
+import ExpenseItemProps from '../ExpenseItem/ExpenseItem';
 import Card from '../../UI/Card/Card';
 import './Expenses.css';
 
