@@ -9,7 +9,7 @@ function Expenses(props) {
 
 	const selectYearHandler = (data) => {
 		setYear(data);
-		console.log(data)
+		props.filterSpec(data);
 	}
 
 	return (

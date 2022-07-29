@@ -5,10 +5,15 @@ import Expenses from './components/ExpenseComponents/Expenses/Expenses/Expenses'
 
 const INITIAL_EXPENSES = [
   { id: 'e1', title: "Expense ratio", amount: 294.67, date: new Date(2021, 8, 8) },
-]
+  { id: 'e2', title: "Book ratio", amount: 394.67, date: new Date(2022, 8, 8) },
+  { id: 'e3', title: "Price ratio", amount: 494.67, date: new Date(2020, 8, 8) },
+  { id: 'e4', title: "Share ratio", amount: 594.67, date: new Date(2019, 8, 8) },
+  { id: 'e5', title: "Share price", amount: 694.67, date: new Date(2019, 8, 8) },
+];
 
 const App = () => {
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+  const [filteredExp, filterExp] = useState(expenses);
 
   // The default argument (prevExp), which can be received from the state function (in this case "setExpenses") should be used
   // The setExpenses([expense, ...expenses]) is not correct
@@ -19,10 +24,14 @@ const App = () => {
     })
   }
 
+  const filterHandler = (selYear) => {
+    filterExp(expenses.filter((e) => e.date.getFullYear().toString() === selYear));
+  }
+
   return (
     <div>
       <NewExpense onAdd={addExpenseHandler} />
-      <Expenses expenses={expenses} />
+      <Expenses filterSpec={filterHandler} expenses={filteredExp} />
     </div>
   );
 }
