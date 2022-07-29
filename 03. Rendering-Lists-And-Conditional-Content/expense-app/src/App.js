@@ -4,11 +4,12 @@ import Expenses from './components/ExpenseComponents/Expenses/Expenses/Expenses'
 
 
 const INITIAL_EXPENSES = [
-  { id: 'e1', title: "Expense ratio", amount: 294.67, date: new Date(2021, 8, 8) },
-  { id: 'e2', title: "Book ratio", amount: 394.67, date: new Date(2022, 8, 8) },
+  { id: 'e1', title: "Expense ratio", amount: 294.67, date: new Date(2021, 6, 6) },
+  { id: 'e2', title: "Book ratio", amount: 394.67, date: new Date(2022, 7, 7) },
   { id: 'e3', title: "Price ratio", amount: 494.67, date: new Date(2020, 8, 8) },
-  { id: 'e4', title: "Share ratio", amount: 594.67, date: new Date(2019, 8, 8) },
-  { id: 'e5', title: "Share price", amount: 694.67, date: new Date(2019, 8, 8) },
+  { id: 'e4', title: "Share ratio", amount: 594.67, date: new Date(2019, 9, 9) },
+  { id: 'e5', title: "Share price", amount: 694.67, date: new Date(2019, 10, 10) },
+  { id: 'e6', title: "Share price", amount: 194.67, date: new Date(2019, 11, 11) },
 ];
 
 const App = () => {

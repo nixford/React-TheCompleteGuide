@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
 import ExpensesList from '../ExpensesList/ExpensesList';
 import Card from '../../../UI/Card/Card';
+import ExpensesChart from '../../ExpensesChart/ExpensesChart';
 import './Expenses.css';
 
 function Expenses(props) {
@@ -23,6 +24,7 @@ function Expenses(props) {
 		<div>
 			<Card className='expenses'>
 				<ExpensesFilter selectedYear={year} onSelect={selectYearHandler} />
+				<ExpensesChart expenses={filteredExp} />
 				<ExpensesList expenses={filteredExp} />
 
 				{/* Making list in React and passing props to child component */}
