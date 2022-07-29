@@ -13,7 +13,6 @@ const INITIAL_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
-  const [filteredExp, filterExp] = useState(expenses);
 
   // The default argument (prevExp), which can be received from the state function (in this case "setExpenses") should be used
   // The setExpenses([expense, ...expenses]) is not correct
@@ -24,14 +23,10 @@ const App = () => {
     })
   }
 
-  const filterHandler = (selYear) => {
-    filterExp(expenses.filter((e) => e.date.getFullYear().toString() === selYear));
-  }
-
   return (
     <div>
       <NewExpense onAdd={addExpenseHandler} />
-      <Expenses filterSpec={filterHandler} expenses={filteredExp} />
+      <Expenses expenses={expenses} />
     </div>
   );
 }

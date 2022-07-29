@@ -9,15 +9,16 @@ function Expenses(props) {
 
 	const selectYearHandler = (data) => {
 		setYear(data);
-		props.filterSpec(data);
 	}
+
+	const filteredExp = props.expenses.filter((e) => e.date.getFullYear().toString() === year);
 
 	return (
 		<div>
 			<Card className='expenses'>
 				<ExpensesFilter selectedYear={year} onSelect={selectYearHandler} />
 				{/* Making list in React and passing props to child component */}
-				{props.expenses.map((expense) => <ExpenseItem key={expense.id} data={expense} />)}
+				{filteredExp.map((expense) => <ExpenseItem key={expense.id} data={expense} />)}
 			</Card>
 		</div>
 
