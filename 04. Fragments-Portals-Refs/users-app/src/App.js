@@ -16,10 +16,15 @@ function App() {
   };
 
   return (
-    <div>
+    // Other option (FRAGMENTS) for avoiding rendering multiple div wrappers in the DOM for each component
+    // <>
+    //   <AddUser onAddUser={addUserHandler} />
+    //   <UsersList users={usersList} />
+    // </>
+    <React.Fragment>
       <AddUser onAddUser={addUserHandler} />
       <UsersList users={usersList} />
-    </div>
+    </React.Fragment>
   );
 }
 
