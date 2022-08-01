@@ -40,6 +40,10 @@ const Login = (props) => {
     isValid: undefined,
   });
 
+  // Optimizing useEffect - the code inside will be executed only when isValid is changed (but not with state + isValid)
+  const { isValid: isEmailValid } = emailState;
+  const { isValid: isPasswordValid } = passwordState;
+
 
   useEffect(() => {
     // Deabouncing example
@@ -47,32 +51,22 @@ const Login = (props) => {
     // The setFormIsValid code runs only after user stops typing more than 500 ms
     const timerID = setTimeout(() => {
       console.log('setFormIsValid-ACTIVATION');
-      setFormIsValid(
-        emailState.value.includes('@') && passwordState.value.trim().length > 6
-      );
+      setFormIsValid(isEmailValid && isPasswordValid);
     }, 500)
 
     return () => {
       console.log('CLEANUP-TIMER');
       clearTimeout(timerID);
     }
-  }, [emailState.value, passwordState.value]);
+  }, [isEmailValid, isPasswordValid]);
 
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: 'USER_INPUT', val: event.target.value });
-
-    setFormIsValid(
-      event.target.value.includes('@') && passwordState.isValid
-    );
   };
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({ type: 'USER_INPUT', val: event.target.value });
-
-    setFormIsValid(
-      emailState.isValid && event.target.value.trim().length > 6
-    );
   };
 
   const validateEmailHandler = () => {
