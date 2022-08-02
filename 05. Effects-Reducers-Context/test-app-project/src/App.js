@@ -28,7 +28,7 @@ function App() {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
   };
-  // OPTION 1 - Provider => Consumer components:
+  // OPTION 1 - "Provider" => "Consumer" components:
   // Example for Context API - providing the context in the all children components in the app
   return (
     <AuthContext.Provider value={{

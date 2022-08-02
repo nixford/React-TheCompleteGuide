@@ -5,6 +5,7 @@ import classes from './Navigation.module.css';
 
 const Navigation = (props) => {
   return (
+    // OPTION 1 - "Provider" => "Consumer" components:
     // Example for Context API - consumer component
     <AuthContext.Consumer>
       {(ctx) => { /*ctx => Context API*/
