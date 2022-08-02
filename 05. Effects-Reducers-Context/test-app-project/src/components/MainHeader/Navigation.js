@@ -5,7 +5,7 @@ import classes from './Navigation.module.css';
 
 const Navigation = (props) => {
   return (
-    // Example for Context API
+    // Example for Context API - consumer component
     <AuthContext.Consumer>
       {(ctx) => { /*ctx => Context API*/
         return (
@@ -16,12 +16,12 @@ const Navigation = (props) => {
                   <a href="/">Users</a>
                 </li>
               )}
-              {props.isLoggedIn && (
+              {ctx.isLoggedIn && (
                 <li>
                   <a href="/">Admin</a>
                 </li>
               )}
-              {props.isLoggedIn && (
+              {ctx.isLoggedIn && (
                 <li>
                   <button onClick={props.onLogout}>Logout</button>
                 </li>
