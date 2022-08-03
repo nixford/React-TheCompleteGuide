@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import MoviesList from "./components/MoviesList/MoviesList";
 import "./App.css";
@@ -31,6 +31,11 @@ function App() {
       });
     setIsLoading(false);
   };
+
+  // If it is neccessary the data to be loaded in the beginning of the page load
+  // useEffect(() => {
+  //   fetchMoviesHandler();
+  // }, []);
 
   return (
     <React.Fragment>
