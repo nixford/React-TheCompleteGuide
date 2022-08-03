@@ -27,3 +27,7 @@ button:active {
   background-color: #460897;
   border-color: #460897;
 }
+
+.error-message {
+  color: red;
+}
