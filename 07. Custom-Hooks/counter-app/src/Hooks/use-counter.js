@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 // the name must start with "use":
 const useCounter = (isForwards) => {
+  // the custom hook's parameter may be also a function -> more flexible approach
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const useCounter = (isForwards) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [isForwards]); // the hook's parameter needs to be added as dependancy in order the useEffect to re-run when it is changed
+  }, [isForwards]); // the custom hook's parameter needs to be added as dependancy in order the useEffect to re-run when it is changed
 
   return counter;
 };
