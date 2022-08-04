@@ -1,36 +1,56 @@
 import { useRef, useState } from "react";
 
-// VALIDATION CONDITION - THE INPUT FIELD MUST NOT BE EMPTY
+// VALIDATION CONDITIONS - NAME: name.trim() !== "", EMAIL: email.includes("@") && email.trim().length > 0
 const SimpleInput = (props) => {
   // OPTION 1 - useState can be used when we need to check the value on submit
-  const nameInputRef = useRef();
+  // const nameInputRef = useRef();
   // OPTION 2 - useState can be used when we need to check the value on every keystroke
   const [name, setName] = useState("");
-  const [isInputTached, setIsInputTached] = useState(false);
+  const [isNameInputTached, setIsNameInputTached] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isEmailInputTached, setIsEmailInputTached] = useState(false);
 
   const isNameValid = name.trim() !== "";
-  const isInputINvalid = !isNameValid && isInputTached;
+  const isNameInputINvalid = !isNameValid && isNameInputTached;
+  const isEmailValid = email.includes("@") && email.trim().length > 0;
+  const isEmailInputINvalid = !isEmailValid && isEmailInputTached;
 
   const nameHandler = (e) => {
     setName(e.target.value);
   };
 
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
   // Validation on losing focus
-  const blurHandler = (e) => {
-    setIsInputTached(true);
+  const blurNameHandler = () => {
+    setIsNameInputTached(true);
+  };
+
+  // Validation on losing focus
+  const blurEmailHandler = () => {
+    setIsEmailInputTached(true);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setIsInputTached(true);
+    setIsNameInputTached(true);
+    setIsEmailInputTached(true);
     if (!isNameValid) {
       return;
     }
     setName("");
-    setIsInputTached(false);
+    setEmail("");
+    setIsNameInputTached(false);
+    setIsEmailInputTached(false);
   };
 
-  const nameInputClasses = isInputINvalid
+  const nameInputClasses = isNameInputINvalid
+    ? "form-control invalid input"
+    : "form-control";
+
+  const emailInputClasses = isEmailInputINvalid
     ? "form-control invalid input"
     : "form-control";
 
@@ -39,15 +59,30 @@ const SimpleInput = (props) => {
       <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
-          ref={nameInputRef}
+          // ref={nameInputRef}
           type="text"
           id="name"
           onChange={nameHandler}
-          onBlur={blurHandler}
+          onBlur={blurNameHandler}
           value={name}
         />
       </div>
-      {isInputINvalid && <p className="error-text">Name must not be empty.</p>}
+      {isNameInputINvalid && (
+        <p className="error-text">Name must not be empty.</p>
+      )}
+      <div className={emailInputClasses}>
+        <label htmlFor="email">Your email</label>
+        <input
+          type="text"
+          id="email"
+          onChange={emailHandler}
+          onBlur={blurEmailHandler}
+          value={email}
+        />
+      </div>
+      {isEmailInputINvalid && (
+        <p className="error-text">Email must contain "@".</p>
+      )}
       <div className="form-actions">
         <button>Submit</button>
       </div>
