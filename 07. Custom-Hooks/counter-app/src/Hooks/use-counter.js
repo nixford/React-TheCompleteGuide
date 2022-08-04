@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import Card from './Card';
-
-const ForwardCounter = () => {
+// the name must start with "use":
+const useCounter = () => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -13,7 +12,7 @@ const ForwardCounter = () => {
     return () => clearInterval(interval);
   }, []);
 
-  return <Card>{counter}</Card>;
+  return counter;
 };
 
-export default ForwardCounter;
+export default useCounter;
