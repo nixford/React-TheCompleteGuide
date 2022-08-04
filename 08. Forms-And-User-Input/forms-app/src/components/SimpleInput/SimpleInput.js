@@ -1,58 +1,36 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 // VALIDATION CONDITION - THE INPUT FIELD MUST NOT BE EMPTY
 const SimpleInput = (props) => {
-  // useState can be used when we need to check the value on submit
+  // OPTION 1 - useState can be used when we need to check the value on submit
   const nameInputRef = useRef();
-  // useState can be used when we need to check the value on every keystroke
+  // OPTION 2 - useState can be used when we need to check the value on every keystroke
   const [name, setName] = useState("");
-  const [isNameValid, setIsNameValid] = useState(false);
-  const [isInputTached, setisInputTached] = useState(false);
+  const [isInputTached, setIsInputTached] = useState(false);
 
-  useEffect(() => {
-    if (isNameValid) {
-      console.log("Name input is valid");
-    }
-  }, [isNameValid]);
+  const isNameValid = name.trim() !== "";
+  const isInputINvalid = !isNameValid && isInputTached;
 
   const nameHandler = (e) => {
     setName(e.target.value);
-
-    // Remove the error whe the user starts to type
-    if (e.target.value !== "") {
-      setIsNameValid(true);
-    }
   };
 
   // Validation on losing focus
   const blurHandler = (e) => {
-    setisInputTached(true);
-    if (name.trim() === "") {
-      setIsNameValid(false);
-    }
+    setIsInputTached(true);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    setisInputTached(true);
-
-    if (name.trim() === "") {
-      setIsNameValid(false);
+    setIsInputTached(true);
+    if (!isNameValid) {
       return;
     }
-
-    setIsNameValid(true);
-
-    // console.log("name: ", name);
-    // console.log("nameInputRef.current.value: ", nameInputRef.current.value);
-
-    // nameInputRef.current.value = ""; => not good practise to directply clead inpuit value
     setName("");
+    setIsInputTached(false);
   };
 
-  const isInvalid = !isNameValid && isInputTached;
-  const nameInputClasses = isInvalid
+  const nameInputClasses = isInputINvalid
     ? "form-control invalid input"
     : "form-control";
 
@@ -69,7 +47,7 @@ const SimpleInput = (props) => {
           value={name}
         />
       </div>
-      {isInvalid && <p className="error-text">Name must not be empty.</p>}
+      {isInputINvalid && <p className="error-text">Name must not be empty.</p>}
       <div className="form-actions">
         <button>Submit</button>
       </div>
