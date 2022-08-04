@@ -5,7 +5,7 @@ import Card from "../Card/Card";
 const ForwardCounter = () => {
   // The custom hook is executed separately in each component
   // In each component the custom hook receives its own state
-  const counter = useCounter();
+  const counter = useCounter(true);
 
   return <Card>{counter}</Card>;
 };
