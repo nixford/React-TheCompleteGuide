@@ -1,10 +1,14 @@
 import { useState } from "react";
 
+// import useInput from "../../hooks/use-input";
+
 // VALIDATION CONDITIONS - NAME: name.trim() !== "", EMAIL: email.includes("@") && email.trim().length > 0
 const SimpleInput = (props) => {
-  // OPTION 1 - useState can be used when we need to check the value on submit
+  // OPTION 1 - VALIDATION WITH useState
+  // useState can be used when we need to check the value on submit
   // const nameInputRef = useRef();
-  // OPTION 2 - useState can be used when we need to check the value on every keystroke
+  // useState can be used when we need to check the value on every keystroke
+
   const [name, setName] = useState("");
   const [isNameInputTached, setIsNameInputTached] = useState(false);
   const [email, setEmail] = useState("");
@@ -33,17 +37,37 @@ const SimpleInput = (props) => {
     setIsEmailInputTached(true);
   };
 
+  //__
+  // OPTION 2 - VALIDATION WITH custom hooks:
+  // const {
+  //   value: name,
+  //   isValid: isNameValid,
+  //   hasError: isNameInputINvalid,
+  //   valueChangeHandler: nameHandler,
+  //   inputBlurHandler: blurNameHandler,
+  //   reset: resetNameInput,
+  // } = useInput((value) => value.trim() !== "");
+
+  // const {
+  //   value: email,
+  //   isValid: isEmailValid,
+  //   hasError: isEmailInputINvalid,
+  //   valueChangeHandler: emailHandler,
+  //   inputBlurHandler: blurEmailHandler,
+  //   reset: resetEmailInput,
+  // } = useInput((value) => value.includes("@") && value.trim().length > 0);
+
   const submitHandler = (e) => {
     e.preventDefault();
-    setIsNameInputTached(true);
-    setIsEmailInputTached(true);
+    // setIsNameInputTached(true);
+    // setIsEmailInputTached(true);
     if (!isNameValid) {
       return;
     }
-    setName("");
-    setEmail("");
-    setIsNameInputTached(false);
-    setIsEmailInputTached(false);
+    // setName("");
+    // setEmail("");
+    // setIsNameInputTached(false);
+    // setIsEmailInputTached(false);
   };
 
   const nameInputClasses = isNameInputINvalid

@@ -87,7 +87,7 @@ button:active {
   margin-left: 1rem;
 }
 
-.form-actions .button-inactive {
+.button-inactive {
   background-color: grey;
   border-color: grey;
 }
