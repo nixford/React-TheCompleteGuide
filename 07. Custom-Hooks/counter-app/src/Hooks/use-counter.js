@@ -14,7 +14,7 @@ const useCounter = (isForwards) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isForwards]); // the hook's parameter needs to be added as dependancy in order the useEffect to re-run when it is changed
 
   return counter;
 };
