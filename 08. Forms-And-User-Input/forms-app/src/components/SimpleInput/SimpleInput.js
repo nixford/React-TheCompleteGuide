@@ -17,6 +17,7 @@ const SimpleInput = (props) => {
     console.log("name: ", name);
     console.log("nameInputRef.current.value: ", nameInputRef.current.value);
 
+    // nameInputRef.current.value = ""; => not good practise to directply clead inpuit value
     setName("");
   };
 
