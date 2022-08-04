@@ -1,12 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 
+// VALIDATION CONDITION - THE INPUT FIELD MUST NOT BE EMPTY
 const SimpleInput = (props) => {
   // useState can be used when we need to check the value on submit
   const nameInputRef = useRef();
   // useState can be used when we need to check the value on every keystroke
   const [name, setName] = useState("");
   const [isNameValid, setIsNameValid] = useState(false);
-  const [isSubmited, setIsSubmited] = useState(false);
+  const [isInputTached, setisInputTached] = useState(false);
 
   useEffect(() => {
     if (isNameValid) {
@@ -16,12 +17,25 @@ const SimpleInput = (props) => {
 
   const nameHandler = (e) => {
     setName(e.target.value);
+
+    // Remove the error whe the user starts to type
+    if (e.target.value !== "") {
+      setIsNameValid(true);
+    }
+  };
+
+  // Validation on losing focus
+  const blurHandler = (e) => {
+    setisInputTached(true);
+    if (name.trim() === "") {
+      setIsNameValid(false);
+    }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    setIsSubmited(true);
+    setisInputTached(true);
 
     if (name.trim() === "") {
       setIsNameValid(false);
@@ -37,7 +51,7 @@ const SimpleInput = (props) => {
     setName("");
   };
 
-  const isInvalid = !isNameValid && isSubmited;
+  const isInvalid = !isNameValid && isInputTached;
   const nameInputClasses = isInvalid
     ? "form-control invalid input"
     : "form-control";
@@ -51,6 +65,7 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameHandler}
+          onBlur={blurHandler}
           value={name}
         />
       </div>
