@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 // VALIDATION CONDITIONS - NAME: name.trim() !== "", EMAIL: email.includes("@") && email.trim().length > 0
 const SimpleInput = (props) => {
@@ -54,6 +54,8 @@ const SimpleInput = (props) => {
     ? "form-control invalid input"
     : "form-control";
 
+  const isFormValid = isNameValid && isEmailValid;
+
   return (
     <form onSubmit={submitHandler}>
       <div className={nameInputClasses}>
@@ -84,7 +86,12 @@ const SimpleInput = (props) => {
         <p className="error-text">Email must contain "@".</p>
       )}
       <div className="form-actions">
-        <button>Submit</button>
+        <button
+          className={`${!isFormValid ? "button-inactive" : ""}`}
+          disabled={!isFormValid}
+        >
+          Submit
+        </button>
       </div>
     </form>
   );
