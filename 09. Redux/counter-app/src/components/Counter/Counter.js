@@ -7,7 +7,8 @@ const Counter = () => {
   // Receiving value from redux store - the value is reactive
   const counter = useSelector((state) => state.counter);
 
-  // Updating value in redux store
+  // OPTION 1 - UPDATING WITH ACTION WITHOUT CARRYING VALUE
+  // Updating value in redux store with simple action, without carrying value
   // dispatch is a function
   const dispatch = useDispatch();
 
@@ -21,6 +22,11 @@ const Counter = () => {
     dispatch({ type: "decrement" });
   };
 
+  // OPTION 2 - UPDATING WITH ACTION WITH INPUT VALUE
+  const increaseHandler = () => {
+    dispatch({ type: "increase", value: 5 });
+  };
+
   const toggleCounterHandler = () => {};
 
   return (
@@ -30,6 +36,7 @@ const Counter = () => {
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={decrementHandler}>Decrement</button>
+        <button onClick={increaseHandler}>Increment by 5</button>
       </div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
