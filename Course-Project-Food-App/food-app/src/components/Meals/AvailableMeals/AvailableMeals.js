@@ -7,6 +7,7 @@ import classes from "./AvailableMeals.module.css";
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -14,6 +15,11 @@ const AvailableMeals = () => {
       const response = await fetch(
         "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/meals.json"
       );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
       const responseData = await response.json();
       const loadedMeals = [];
 
@@ -29,7 +35,10 @@ const AvailableMeals = () => {
       setIsLoading(false);
     };
 
-    fetchMeals();
+    fetchMeals().catch((err) => {
+      setIsLoading(false);
+      setHttpError(err.message);
+    });
   }, []);
 
   const mealsList = meals.map((m) => (
@@ -45,8 +54,13 @@ const AvailableMeals = () => {
   return (
     <section className={classes.meals}>
       <Card>
-        {!isLoading && <ul>{mealsList}</ul>}
-        {isLoading && <p>Loading...</p>}
+        {!isLoading && !httpError && <ul>{mealsList}</ul>}
+        {isLoading && !httpError && (
+          <p className={classes["loading-message"]}>Loading... {httpError}</p>
+        )}
+        {!isLoading && httpError && (
+          <p className={classes["error-message"]}>{httpError}</p>
+        )}
       </Card>
     </section>
   );
