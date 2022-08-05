@@ -9,6 +9,9 @@ import classes from "./Cart.module.css";
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [httpError, setHttpError] = useState();
+
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -25,6 +28,18 @@ const Cart = (props) => {
 
   const orderHandler = () => {
     setIsCheckout(true);
+  };
+
+  const submitOrderHandler = (userData) => {
+    console.log("userData: ", userData);
+
+    fetch(
+      "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({ user: userData, orderedItems: cartCtx.items }),
+      }
+    );
   };
 
   const cartItems = (
@@ -62,7 +77,12 @@ const Cart = (props) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onCloseCart} />}
+      {isCheckout && (
+        <Checkout
+          onCancel={props.onCloseCart}
+          onSubmitOrder={submitOrderHandler}
+        />
+      )}
       {!isCheckout && modalActions}
     </Modal>
   );

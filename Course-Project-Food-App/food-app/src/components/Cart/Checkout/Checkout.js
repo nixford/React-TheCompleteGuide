@@ -26,6 +26,8 @@ const Checkout = (props) => {
     const isFormValid = name && street && postal && city;
 
     if (isFormValid) {
+      props.onSubmitOrder({ name, street, postal, city });
+
       setOrderMessage(
         <div>
           <h3 className={classes["successfull-message"]}>
