@@ -1,29 +1,85 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import classes from "./Checkout.module.css";
 
 const Checkout = (props) => {
-  const confirmHandler = (event) => {
-    event.preventDefault();
+  const [formInputsValidity, setFormInputsValidity] = useState({
+    isNameValid: true,
+    isStreetValid: true,
+    isPostalValid: true,
+    isCityValid: true,
+  });
+  const [orderMessage, setOrderMessage] = useState(null);
+  const nameRef = useRef({});
+  const streetRef = useRef({});
+  const postalRef = useRef({});
+  const cityRef = useRef({});
+
+  const confirmHandler = (e) => {
+    e.preventDefault();
+
+    const name = nameRef.current.value;
+    const street = streetRef.current.value;
+    const postal = postalRef.current.value;
+    const city = cityRef.current.value;
+
+    const isFormValid = name && street && postal && city;
+
+    if (isFormValid) {
+      setOrderMessage(
+        <div>
+          <h3 className={classes["successfull-message"]}>
+            Your order is successfull...
+          </h3>
+          <div className={classes.actions}>
+            <button type="button" onClick={props.onCancel}>
+              Close
+            </button>
+          </div>
+        </div>
+      );
+      return;
+    }
+
+    setFormInputsValidity({
+      isNameValid: name.trim() !== "",
+      isStreetValid: street.trim() !== "",
+      isPostalValid: postal.trim() !== "",
+      isCityValid: city.trim() !== "",
+    });
+
+    setOrderMessage(null);
   };
 
-  return (
+  const formElement = (
     <form className={classes.form} onSubmit={confirmHandler}>
       <div className={classes.control}>
         <label htmlFor="name">Your Name</label>
-        <input type="text" id="name" />
+        <input ref={nameRef} type="text" id="name" />
+        {!formInputsValidity.isNameValid && (
+          <p className={classes["error-message"]}>Plase enter your name...</p>
+        )}
       </div>
       <div className={classes.control}>
         <label htmlFor="street">Street</label>
-        <input type="text" id="street" />
+        <input ref={streetRef} type="text" id="street" />
+        {!formInputsValidity.isStreetValid && (
+          <p className={classes["error-message"]}>Plase enter street info...</p>
+        )}
       </div>
       <div className={classes.control}>
         <label htmlFor="postal">Postal Code</label>
-        <input type="text" id="postal" />
+        <input ref={postalRef} type="text" id="postal" />
+        {!formInputsValidity.isPostalValid && (
+          <p className={classes["error-message"]}>Plase enter postal code...</p>
+        )}
       </div>
       <div className={classes.control}>
         <label htmlFor="city">City</label>
-        <input type="text" id="city" />
+        <input ref={cityRef} type="text" id="city" />
+        {!formInputsValidity.isCityValid && (
+          <p className={classes["error-message"]}>Plase enter your city...</p>
+        )}
       </div>
       <div className={classes.actions}>
         <button type="button" onClick={props.onCancel}>
@@ -33,6 +89,8 @@ const Checkout = (props) => {
       </div>
     </form>
   );
+
+  return orderMessage ? orderMessage : formElement;
 };
 
 export default Checkout;
