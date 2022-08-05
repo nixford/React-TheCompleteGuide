@@ -58,14 +58,6 @@
   color: #ca3e51;
 }
 
-.successfull-message {
-  color: green;
-}
-
-.error-message {
-  color: #ca3e51;
-}
-
 .invalid input {
   border-color: #aa0b20;
   background-color: #ffeff1;

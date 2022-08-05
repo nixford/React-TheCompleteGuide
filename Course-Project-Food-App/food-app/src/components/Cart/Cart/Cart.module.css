@@ -44,3 +44,11 @@
   background-color: #8a2b06;
   color: white;
 }
+
+.successfull-message {
+  color: green;
+}
+
+.error-message {
+  color: #ca3e51;
+}

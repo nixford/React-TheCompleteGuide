@@ -9,8 +9,8 @@ import classes from "./Cart.module.css";
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [httpError, setHttpError] = useState();
+  const [isSubmitting, setisSubmitting] = useState(false);
+  const [orderMessage, setOrderMessage] = useState(null);
 
   const cartCtx = useContext(CartContext);
 
@@ -30,15 +30,44 @@ const Cart = (props) => {
     setIsCheckout(true);
   };
 
-  const submitOrderHandler = (userData) => {
+  const submitOrderHandler = async (userData) => {
     console.log("userData: ", userData);
-
-    fetch(
+    setOrderMessage(
+      <h3 className={classes["successfull-message"]}>Loading...</h3>
+    );
+    const response = await fetch(
       "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/orders.json",
       {
         method: "POST",
         body: JSON.stringify({ user: userData, orderedItems: cartCtx.items }),
       }
+    );
+
+    if (!response.ok) {
+      setOrderMessage(
+        <div>
+          <h3 className={classes["error-message"]}>Something went wrong...</h3>
+          <div className={classes.actions}>
+            <button type="button" onClick={props.onCloseCart}>
+              Close
+            </button>
+          </div>
+        </div>
+      );
+      return;
+    }
+
+    setOrderMessage(
+      <div>
+        <h3 className={classes["successfull-message"]}>
+          Your order is successfull...
+        </h3>
+        <div className={classes.actions}>
+          <button type="button" onClick={props.onCloseCart}>
+            Close
+          </button>
+        </div>
+      </div>
     );
   };
 
@@ -81,6 +110,8 @@ const Cart = (props) => {
         <Checkout
           onCancel={props.onCloseCart}
           onSubmitOrder={submitOrderHandler}
+          orderMessage={orderMessage}
+          isSubmitting={isSubmitting}
         />
       )}
       {!isCheckout && modalActions}

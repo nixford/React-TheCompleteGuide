@@ -9,7 +9,6 @@ const Checkout = (props) => {
     isPostalValid: true,
     isCityValid: true,
   });
-  const [orderMessage, setOrderMessage] = useState(null);
   const nameRef = useRef({});
   const streetRef = useRef({});
   const postalRef = useRef({});
@@ -27,19 +26,6 @@ const Checkout = (props) => {
 
     if (isFormValid) {
       props.onSubmitOrder({ name, street, postal, city });
-
-      setOrderMessage(
-        <div>
-          <h3 className={classes["successfull-message"]}>
-            Your order is successfull...
-          </h3>
-          <div className={classes.actions}>
-            <button type="button" onClick={props.onCancel}>
-              Close
-            </button>
-          </div>
-        </div>
-      );
       return;
     }
 
@@ -49,8 +35,6 @@ const Checkout = (props) => {
       isPostalValid: postal.trim() !== "",
       isCityValid: city.trim() !== "",
     });
-
-    setOrderMessage(null);
   };
 
   const formElement = (
@@ -92,7 +76,7 @@ const Checkout = (props) => {
     </form>
   );
 
-  return orderMessage ? orderMessage : formElement;
+  return props.orderMessage ? props.orderMessage : formElement;
 };
 
 export default Checkout;
