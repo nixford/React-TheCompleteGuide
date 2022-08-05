@@ -1,12 +1,18 @@
-import classes from './Counter.module.css';
+// Receiving value from redux store
+import { useSelector } from "react-redux";
+
+import classes from "./Counter.module.css";
 
 const Counter = () => {
+  // Receiving value from redux store - the value is reactive
+  const counter = useSelector((state) => state.counter);
+
   const toggleCounterHandler = () => {};
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>-- COUNTER VALUE --</div>
+      <div className={classes.value}>{counter}</div>
       <button onClick={toggleCounterHandler}>Toggle Counter</button>
     </main>
   );
