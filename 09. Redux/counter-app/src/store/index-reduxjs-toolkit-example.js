@@ -1,15 +1,15 @@
 // Better to use "createSlice" (more powerfull) than "createReducer"
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
-const initialState = { counter: 0, showCounter: true };
+const initialCounterState = { counter: 0, showCounter: true };
 
 const counterSlice = createSlice({
   name: "counter",
-  initialState,
+  initialState: initialCounterState,
   reducers: {
     increment(state) {
-      // Althow it is allowed (there is another package - "Immer" which takes care the state not to be mutated directly)
-      // but we still must not mutate the state
+      // Althow it is allowed (there is another package - "Immer" which takes care the state not to be mutated directly) it is better not to mutate
+      // for example perpouses:
       state.counter++;
     },
     decrement(state) {
@@ -24,6 +24,26 @@ const counterSlice = createSlice({
   },
 });
 
+const initialAuthState = { isAuthenticated: false };
+
+const authSlice = createSlice({
+  name: "auth",
+  initialState: initialAuthState,
+  reducers: {
+    login(state) {
+      return {
+        isAuthenticated: true,
+      };
+    },
+    logout(state) {
+      return {
+        isAuthenticated: false,
+      };
+    },
+  },
+});
+
+// Example for implementing one createSlices
 // const store = configureStore({
 //   reducer: counterSlice.reducer,
 // });
@@ -32,11 +52,12 @@ const counterSlice = createSlice({
 const store = configureStore({
   reducer: {
     counter: counterSlice.reducer,
-    // orders: ordersSlice.reducer,
-    // users: usersSlice.reducer,
+    auth: authSlice.reducer,
+    // producte: usersSlice.reducer,
   },
 });
 
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 
 export default store;
