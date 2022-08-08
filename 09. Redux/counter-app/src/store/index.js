@@ -4,6 +4,7 @@ const initialState = { counter: 0, showCounter: true };
 
 const countReducer = (state = initialState, action) => {
   if (action.type === "increment") {
+    // RULE - never directly mutate existing state - like "state.counter++", but always return new object:
     return {
       counter: state.counter + 1,
       // despite no changes to "showCounter" here, we need to set it also,
