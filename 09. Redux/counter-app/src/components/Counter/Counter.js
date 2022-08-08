@@ -1,6 +1,9 @@
 // Receiving value from redux store
 import { useSelector, useDispatch } from "react-redux";
 
+//Example for importing counter actions - redux-toolkit
+import { counterActions } from "../../store/index-reduxjs-toolkit-example";
+
 import classes from "./Counter.module.css";
 
 const Counter = () => {
@@ -15,21 +18,31 @@ const Counter = () => {
 
   const incrementHandler = () => {
     // dispatch is receiving object with key "type" and value, which is equal as the value in the store
-    dispatch({ type: "increment" });
+    // dispatch({ type: "increment" });
+
+    // Example for dispatching actions with redux-toolkit
+    dispatch(counterActions.increment());
   };
 
   const decrementHandler = () => {
     // dispatch is receiving object with key "type" and value, which is equal as the value in the store
-    dispatch({ type: "decrement" });
+    // dispatch({ type: "decrement" });
+
+    // Example for dispatching actions with redux-toolkit
+    dispatch(counterActions.decrement());
   };
 
   // OPTION 2 - UPDATING WITH ACTION WITH INPUT VALUE
   const increaseHandler = () => {
-    dispatch({ type: "increase", value: 5 });
+    // dispatch({ type: "increase", value: 5 });
+
+    dispatch(counterActions.increase(5)); // extract in store: { type: 'UNIQUE_VALUE', payload: 5 }
   };
 
   const toggleCounterHandler = () => {
-    dispatch({ type: "toggle" });
+    // dispatch({ type: "toggle" });
+
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
