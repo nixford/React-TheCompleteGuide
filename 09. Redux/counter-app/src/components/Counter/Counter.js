@@ -6,6 +6,7 @@ import classes from "./Counter.module.css";
 const Counter = () => {
   // Receiving value from redux store - the value is reactive
   const counter = useSelector((state) => state.counter);
+  const showCounter = useSelector((state) => state.showCounter);
 
   // OPTION 1 - UPDATING WITH ACTION WITHOUT CARRYING VALUE
   // Updating value in redux store with simple action, without carrying value
@@ -27,12 +28,14 @@ const Counter = () => {
     dispatch({ type: "increase", value: 5 });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "toggle" });
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {showCounter && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={decrementHandler}>Decrement</button>
