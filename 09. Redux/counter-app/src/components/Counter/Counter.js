@@ -8,8 +8,8 @@ import classes from "./Counter.module.css";
 
 const Counter = () => {
   // Receiving value from redux store - the value is reactive
-  const counter = useSelector((state) => state.counter);
-  const showCounter = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const showCounter = useSelector((state) => state.counter.showCounter);
 
   // OPTION 1 - UPDATING WITH ACTION WITHOUT CARRYING VALUE
   // Updating value in redux store with simple action, without carrying value

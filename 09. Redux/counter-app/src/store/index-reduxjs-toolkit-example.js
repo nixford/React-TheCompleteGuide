@@ -24,18 +24,18 @@ const counterSlice = createSlice({
   },
 });
 
-const store = configureStore({
-  reducer: counterSlice.reducer,
-});
-
-// Exaample for implementing many createSlices (instead "reducer: counterSlice.reducer")
 // const store = configureStore({
-//   reducer: {
-//     counter: counterSlice.reducer,
-//     orders: ordersSlice.reducer,
-//     users: usersSlice.reducer,
-//   },
+//   reducer: counterSlice.reducer,
 // });
+
+// Example for implementing many createSlices (instead "reducer: counterSlice.reducer")
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    // orders: ordersSlice.reducer,
+    // users: usersSlice.reducer,
+  },
+});
 
 export const counterActions = counterSlice.actions;
 
