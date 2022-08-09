@@ -6,6 +6,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: initialCartState,
   reducers: {
+    // RULE: never run async code (such as Http requests) inside the reducer
     // The state can be mutated directly because reduxjs/toolkit ("Immer" package) is prtecting from bugs
     addItemToCart(state, action) {
       const newItem = action.payload;
