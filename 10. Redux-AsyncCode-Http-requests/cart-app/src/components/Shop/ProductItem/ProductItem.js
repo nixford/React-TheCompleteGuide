@@ -23,32 +23,32 @@ const ProductItem = (props) => {
 
   // const addToCartHandler = async () => {
 
-    // POST - Http request to update data in database
-      //  const response = await fetch(
-      //   "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/items.json",
-      //   {
-      //     method: "POST",
-      //     body: JSON.stringify({ .... }),
-      //   }
-      // );
-      // if (!response.ok) {
-      //   throw new Error("Something went wrong!");
-      // }
+  // POST - Http request to update data in database
+  //  const response = await fetch(
+  //   "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/items.json",
+  //   {
+  //     method: "POST",
+  //     body: JSON.stringify({ .... }),
+  //   }
+  // );
+  // if (!response.ok) {
+  //   throw new Error("Something went wrong!");
+  // }
 
-    // GET - Http request to fetch data
-      // const response = await fetch(
-      //   "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/items.json"
-      // );
-      // if (!response.ok) {
-      //   throw new Error("Something went wrong!");
-      // }
-      // const responseData = await response.json();
+  // GET - Http request to fetch data
+  // const response = await fetch(
+  //   "https://foodapp-13bc4-default-rtdb.europe-west1.firebasedatabase.app/items.json"
+  // );
+  // if (!response.ok) {
+  //   throw new Error("Something went wrong!");
+  // }
+  // const responseData = await response.json();
 
-    // UPDATE the state (items in store)
-      // dispatch(
-      //   cartActions.updateItems({items: items})
-      // );
-  };
+  // UPDATE the state (items in store)
+  // dispatch(
+  //   cartActions.updateItems({items: items})
+  // );
+  // };
 
   return (
     <li className={classes.item}>
