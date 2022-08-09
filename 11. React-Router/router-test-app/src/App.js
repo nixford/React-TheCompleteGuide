@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
 
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Welkome from "./views/Welkome";
 import Products from "./views/Products";
 
