@@ -1,4 +1,7 @@
-import { Link } from "react-router-dom";
+// The same as Link, but provides a activeClassName for setting style to the selected link
+import { NavLink } from "react-router-dom";
+
+// import { Link } from "react-router-dom";
 
 import classes from "./Header.module.css";
 
@@ -8,10 +11,14 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/welkome">Welkome</Link>
+            <NavLink activeClassName={classes.active} to="/welkome">
+              Welkome
+            </NavLink>
           </li>
           <li>
-            <Link to="/products">Products</Link>
+            <NavLink activeClassName={classes.active} to="/products">
+              Products
+            </NavLink>
           </li>
         </ul>
       </nav>
