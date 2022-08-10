@@ -13,11 +13,11 @@ function App() {
         <Route path="/welkome">
           <Welkome />
         </Route>
-        <Route path="/products">
+        <Route path="/products" exact>
           <Products />
         </Route>
         {/*dynamic raute - /:... for transfaring the data after the colom */}
-        <Route path="/product/:productName">
+        <Route path="/products/:productName">
           <ProductDetails />
         </Route>
       </main>
