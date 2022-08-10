@@ -17,7 +17,7 @@ function App() {
           <Products />
         </Route>
         {/*dynamic raute - /:... for transfaring the data after the colom */}
-        <Route path="/product-detail/:productName">
+        <Route path="/product/:productName">
           <ProductDetails />
         </Route>
       </main>
