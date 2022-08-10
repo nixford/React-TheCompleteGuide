@@ -1,11 +1,15 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Products = () => {
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search).get("sort");
+
   return (
     <section>
-      <h1>Products</h1>
+      <h1>Products sorted by {queryParams} order:</h1>
       <section>
         <div>
           <Link to="/products/Book">Book</Link>
