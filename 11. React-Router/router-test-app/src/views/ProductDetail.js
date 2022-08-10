@@ -8,7 +8,8 @@ const ProductDetails = () => {
   const params = useParams();
 
   // Example for programmatic navigation
-  const doneHandler = () => {
+  const doneHandler = async () => {
+    await setFocus(false);
     history.push("/welkome");
   };
 
@@ -28,7 +29,7 @@ const ProductDetails = () => {
       <br />
       <form onFocus={focusHandler}>
         <div>
-          <labe>Author</labe>
+          <label>Author</label>
           <input type="text" id="author" />
         </div>
         <br />
