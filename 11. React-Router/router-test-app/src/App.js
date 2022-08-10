@@ -4,14 +4,16 @@ import Header from "./components/Header/Header";
 import Welkome from "./views/Welkome";
 import Products from "./views/Products";
 import ProductDetails from "./views/ProductDetail";
+import NotFound from "./views/NotFound";
 
 function App() {
   return (
     <div>
       <Header />
       <main>
+        {/*take cares to match only one route*/}
         <Switch>
-          <Route path="/">
+          <Route path="/" exact>
             <Redirect to="/welkome" />
           </Route>
           <Route path="/welkome">
@@ -24,6 +26,10 @@ function App() {
           {/*dynamic raute - /:... for transfaring the data after the colom */}
           <Route path="/products/:productName">
             <ProductDetails />
+          </Route>
+          {/*Example for not-found page*/}
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </main>
