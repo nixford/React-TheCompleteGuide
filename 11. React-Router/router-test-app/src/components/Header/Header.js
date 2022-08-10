@@ -20,6 +20,11 @@ const Header = () => {
               Products
             </NavLink>
           </li>
+          <li>
+            <NavLink activeClassName={classes.active} to="/form">
+              FormPage
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
