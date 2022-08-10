@@ -4,6 +4,7 @@ const ProductDetails = () => {
   const history = useHistory();
   const params = useParams();
 
+  // Example for programmatic navigation
   const doneHandler = () => {
     history.push("/welkome");
   };
