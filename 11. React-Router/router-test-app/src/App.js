@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Welkome from "./views/Welkome";
@@ -10,16 +10,22 @@ function App() {
     <div>
       <Header />
       <main>
-        <Route path="/welkome">
-          <Welkome />
-        </Route>
-        <Route path="/products" exact>
-          <Products />
-        </Route>
-        {/*dynamic raute - /:... for transfaring the data after the colom */}
-        <Route path="/products/:productName">
-          <ProductDetails />
-        </Route>
+        <Switch>
+          <Route path="/">
+            <Redirect to="/welkome" />
+          </Route>
+          <Route path="/welkome">
+            <Welkome />
+          </Route>
+          {/*exact keyword prevents the route to match all other routes starting with "/products" */}
+          <Route path="/products" exact>
+            <Products />
+          </Route>
+          {/*dynamic raute - /:... for transfaring the data after the colom */}
+          <Route path="/products/:productName">
+            <ProductDetails />
+          </Route>
+        </Switch>
       </main>
     </div>
   );
