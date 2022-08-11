@@ -12,15 +12,12 @@ function App() {
       <main>
         {/*Swich is not supported in v6 and now we can use "Routes"*/}
         <Routes>
-          <Route path="/welcome">
-            <Welcome />
-          </Route>
-          <Route path="/products" exact>
-            <Products />
-          </Route>
-          <Route path="/products/:productId">
-            <ProductDetail />
-          </Route>
+          <Route path="/welcome" element={<Welcome />}></Route>
+          <Route path="/products" exact element={<Products />}></Route>
+          <Route
+            path="/products/:productId"
+            element={<ProductDetail />}
+          ></Route>
         </Routes>
       </main>
     </div>
