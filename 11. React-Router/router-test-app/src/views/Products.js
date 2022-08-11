@@ -12,6 +12,7 @@ const Products = () => {
       <h1>Products sorted by {queryParams} order:</h1>
       <section>
         <div>
+          {/*"Book" is the dynamic param*/}
           <Link to="/products/Book">Book</Link>
         </div>
         <div>
