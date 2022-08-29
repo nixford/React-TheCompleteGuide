@@ -1,3 +1,3 @@
 # React-TheCompleteGuide
 
-![Certificate](Certificate.pdf)
+![Certificate](Certificate.jpg)
