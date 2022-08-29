@@ -1,3 +1,3 @@
 # React-TheCompleteGuide
 
-![](/Certificate.pdf)
+![](Certificate.pdf)
